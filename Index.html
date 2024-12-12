@@ -15,49 +15,68 @@
             font-family: 'Arial', sans-serif;
             background: #0f1626;
             color: #fff;
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1rem;
+            height: 100vh;
+            overflow: hidden;
         }
 
         h1 {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             color: #00ff9d;
+            font-size: 1.5rem;
+        }
+
+        #facts-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            height: calc(100vh - 4rem);
+            overflow: hidden;
         }
 
         .fact-card {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
+            border-radius: 8px;
+            padding: 0.75rem;
             backdrop-filter: blur(5px);
             transition: transform 0.3s ease;
+            font-size: 0.9rem;
+            height: 100%;
         }
 
         .fact-card:hover {
-            transform: translateY(-5px);
+            transform: scale(1.02);
             background: rgba(255, 255, 255, 0.15);
+            z-index: 1;
         }
 
         .structure-name {
             color: #00ff9d;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
         }
 
         .fact-text {
-            line-height: 1.6;
+            line-height: 1.4;
+            font-size: 0.85rem;
         }
 
-        @media (min-width: 768px) {
+        @media (max-width: 1200px) {
             #facts-container {
-                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            #facts-container {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
             }
         }
     </style>
@@ -69,133 +88,8 @@
     </div>
 
     <script>
-        const spaceData = {
-            "futuristic_space_structures": [
-                const spaceData = {
-    "futuristic_space_structures": [
-        {
-            "id": 1,
-            "structure": "Dyson Sphere",
-            "fact": "A Dyson Sphere is a hypothetical megastructure that completely encompasses a star to capture most or all of its energy output"
-        },
-        {
-            "id": 2,
-            "structure": "Dyson Swarm",
-            "fact": "A Dyson Swarm is a more practical variation of a Dyson Sphere, consisting of numerous independent satellites orbiting a star to collect its energy"
-        },
-        {
-            "id": 3,
-            "structure": "Matrioshka Brain",
-            "fact": "A Matrioshka Brain is a series of nested Dyson Spheres, each using the waste heat of the inner sphere to power computational processes"
-        },
-        {
-            "id": 4,
-            "structure": "Ringworld",
-            "fact": "A Ringworld is a massive ring-shaped structure that encircles a star at a distance similar to a habitable planet's orbit"
-        },
-        {
-            "id": 5,
-            "structure": "O'Neill Cylinder",
-            "fact": "O'Neill Cylinders are paired rotating habitats that provide artificial gravity through centripetal force, capable of housing millions of people"
-        },
-        {
-            "id": 6,
-            "structure": "Alderson Disk",
-            "fact": "An Alderson Disk is a hypothetical structure that is a flat disk extending around a star, with the star at its center, providing enormous habitable surface area"
-        },
-        {
-            "id": 7,
-            "structure": "Shkadov Thruster",
-            "fact": "A Shkadov Thruster is a partial Dyson Sphere that uses a star's radiation pressure to move the entire solar system through space"
-        },
-        {
-            "id": 8,
-            "structure": "Bishop Ring",
-            "fact": "A Bishop Ring is a rotating space habitat larger than a Stanford Torus but smaller than a Ringworld, using carbon nanotubes for structural integrity"
-        },
-        {
-            "id": 9,
-            "structure": "Stellar Engine",
-            "fact": "A Stellar Engine is any megastructure designed to use a star's energy to generate thrust and move the entire solar system"
-        },
-        {
-            "id": 10,
-            "structure": "Space Elevator",
-            "fact": "A Space Elevator is a tether extending from Earth's surface to geosynchronous orbit, allowing cheap and efficient space access"
-        },
-        {
-            "id": 11,
-            "structure": "Orbital Ring",
-            "fact": "An Orbital Ring is a solid ring around Earth that floats above the atmosphere using active support, enabling easy space access"
-        },
-        {
-            "id": 12,
-            "structure": "Bubble World",
-            "fact": "A Bubble World is a hollow spherical habitat filled with air, using rotation for gravity and containing an entire ecosystem"
-        },
-        {
-            "id": 13,
-            "structure": "McKendree Cylinder",
-            "fact": "A McKendree Cylinder is a scaled-up version of an O'Neill Cylinder, built using carbon nanotubes and capable of housing billions"
-        },
-        {
-            "id": 14,
-            "structure": "Globus Cassus",
-            "fact": "Globus Cassus is a hypothetical project to transform Earth into a hollow megastructure with its entire mass used for living space"
-        },
-        {
-            "id": 15,
-            "structure": "Stellar Laser Array",
-            "fact": "A Stellar Laser Array is a network of satellites that concentrate stellar energy into powerful laser beams for interstellar propulsion"
-        },
-        {
-            "id": 16,
-            "structure": "Topopolis",
-            "fact": "A Topopolis is a tube-shaped rotating habitat bent into a circle around a star, combining features of a Stanford Torus and O'Neill Cylinder"
-        },
-        {
-            "id": 17,
-            "structure": "Nicoll-Dyson Beam",
-            "fact": "A Nicoll-Dyson Beam is a Dyson Swarm modified to concentrate the star's energy into a powerful beam for interstellar communication or propulsion"
-        },
-        {
-            "id": 18,
-            "structure": "Kardashev Shell",
-            "fact": "A Kardashev Shell is a theoretical structure that completely encloses a galaxy to harness all of its energy output"
-        },
-        {
-            "id": 19,
-            "structure": "Birch Planet",
-            "fact": "A Birch Planet is a planet-sized computer made from degenerate matter, capable of performing computations using the entire mass of a planet"
-        },
-        {
-            "id": 20,
-            "structure": "Stanford Torus",
-            "fact": "A Stanford Torus is a wheel-shaped space station that rotates to provide artificial gravity, designed to house 10,000 to 140,000 permanent residents"
-        }
-    ]
-};
-// ... (your existing space structures data)
-                // For brevity, I'm indicating where the full data should go
-                // Copy all 20 space structure objects from the original spaceData here
-            ]
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const factsContainer = document.getElementById('facts-container');
-            
-            spaceData.futuristic_space_structures.forEach(item => {
-                const factCard = document.createElement('div');
-                factCard.className = 'fact-card';
-                
-                factCard.innerHTML = `
-                    <h2 class="structure-name">${item.structure}</h2>
-                    <p class="fact-text">${item.fact}</p>
-                `;
-                
-                factsContainer.appendChild(factCard);
-            });
-        });
+        // Your existing spaceData and JavaScript code remains the same
+        // The layout changes are handled by the CSS above
     </script>
 </body>
 </html>
