@@ -5,7 +5,7 @@ A simple, responsive web application that displays information about 20 theoreti
 ## Features
 
 - Responsive grid layout that adapts to different screen sizes
-- Hover animations on fact cards
+- A Button for moving to the next fact
 - Modern space-themed design
 - Pure HTML/CSS/JavaScript implementation (no dependencies)
 - Single file architecture for easy deployment
