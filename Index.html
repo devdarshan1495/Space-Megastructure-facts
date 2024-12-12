@@ -15,12 +15,17 @@
             font-family: 'Arial', sans-serif;
             background: #0f1626;
             color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
+            text-align: center;
         }
 
         h1 {
@@ -32,161 +37,179 @@
         .fact-card {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
             backdrop-filter: blur(5px);
-            transition: transform 0.3s ease;
-        }
-
-        .fact-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .structure-name {
             color: #00ff9d;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .fact-text {
             line-height: 1.6;
+            font-size: 1.1rem;
         }
 
-        @media (min-width: 768px) {
-            #facts-container {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
+        .next-button {
+            background: #00ff9d;
+            color: #0f1626;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .next-button:hover {
+            transform: translateY(-2px);
+            background: #00cc7d;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Futuristic Space Structures</h1>
-        <div id="facts-container"></div>
+        <div id="fact-card" class="fact-card"></div>
+        <button id="next-button" class="next-button">Next Fact</button>
     </div>
 
     <script>
         const spaceData = {
             "futuristic_space_structures": [
-                {
-                    "id": 1,
-                    "structure": "Dyson Sphere",
-                    "fact": "A Dyson Sphere is a hypothetical megastructure that completely encompasses a star to capture most or all of its energy output"
-                },
-                {
-                    "id": 2,
-                    "structure": "Dyson Swarm",
-                    "fact": "A Dyson Swarm is a more practical variation of a Dyson Sphere, consisting of numerous independent satellites orbiting a star to collect its energy"
-                },
-                {
-                    "id": 3,
-                    "structure": "Matrioshka Brain",
-                    "fact": "A Matrioshka Brain is a series of nested Dyson Spheres, each using the waste heat of the inner sphere to power computational processes"
-                },
-                {
-                    "id": 4,
-                    "structure": "Ringworld",
-                    "fact": "A Ringworld is a massive ring-shaped structure that encircles a star at a distance similar to a habitable planet's orbit"
-                },
-                {
-                    "id": 5,
-                    "structure": "O'Neill Cylinder",
-                    "fact": "O'Neill Cylinders are paired rotating habitats that provide artificial gravity through centripetal force, capable of housing millions of people"
-                },
-                {
-                    "id": 6,
-                    "structure": "Alderson Disk",
-                    "fact": "An Alderson Disk is a hypothetical structure that is a flat disk extending around a star, with the star at its center, providing enormous habitable surface area"
-                },
-                {
-                    "id": 7,
-                    "structure": "Shkadov Thruster",
-                    "fact": "A Shkadov Thruster is a partial Dyson Sphere that uses a star's radiation pressure to move the entire solar system through space"
-                },
-                {
-                    "id": 8,
-                    "structure": "Bishop Ring",
-                    "fact": "A Bishop Ring is a rotating space habitat larger than a Stanford Torus but smaller than a Ringworld, using carbon nanotubes for structural integrity"
-                },
-                {
-                    "id": 9,
-                    "structure": "Stellar Engine",
-                    "fact": "A Stellar Engine is any megastructure designed to use a star's energy to generate thrust and move the entire solar system"
-                },
-                {
-                    "id": 10,
-                    "structure": "Space Elevator",
-                    "fact": "A Space Elevator is a tether extending from Earth's surface to geosynchronous orbit, allowing cheap and efficient space access"
-                },
-                {
-                    "id": 11,
-                    "structure": "Orbital Ring",
-                    "fact": "An Orbital Ring is a solid ring around Earth that floats above the atmosphere using active support, enabling easy space access"
-                },
-                {
-                    "id": 12,
-                    "structure": "Bubble World",
-                    "fact": "A Bubble World is a hollow spherical habitat filled with air, using rotation for gravity and containing an entire ecosystem"
-                },
-                {
-                    "id": 13,
-                    "structure": "McKendree Cylinder",
-                    "fact": "A McKendree Cylinder is a scaled-up version of an O'Neill Cylinder, built using carbon nanotubes and capable of housing billions"
-                },
-                {
-                    "id": 14,
-                    "structure": "Globus Cassus",
-                    "fact": "Globus Cassus is a hypothetical project to transform Earth into a hollow megastructure with its entire mass used for living space"
-                },
-                {
-                    "id": 15,
-                    "structure": "Stellar Laser Array",
-                    "fact": "A Stellar Laser Array is a network of satellites that concentrate stellar energy into powerful laser beams for interstellar propulsion"
-                },
-                {
-                    "id": 16,
-                    "structure": "Topopolis",
-                    "fact": "A Topopolis is a tube-shaped rotating habitat bent into a circle around a star, combining features of a Stanford Torus and O'Neill Cylinder"
-                },
-                {
-                    "id": 17,
-                    "structure": "Nicoll-Dyson Beam",
-                    "fact": "A Nicoll-Dyson Beam is a Dyson Swarm modified to concentrate the star's energy into a powerful beam for interstellar communication or propulsion"
-                },
-                {
-                    "id": 18,
-                    "structure": "Kardashev Shell",
-                    "fact": "A Kardashev Shell is a theoretical structure that completely encloses a galaxy to harness all of its energy output"
-                },
-                {
-                    "id": 19,
-                    "structure": "Birch Planet",
-                    "fact": "A Birch Planet is a planet-sized computer made from degenerate matter, capable of performing computations using the entire mass of a planet"
-                },
-                {
-                    "id": 20,
-                    "structure": "Stanford Torus",
-                    "fact": "A Stanford Torus is a wheel-shaped space station that rotates to provide artificial gravity, designed to house 10,000 to 140,000 permanent residents"
-                }
+
+        {
+            "id": 1,
+            "structure": "Dyson Sphere",
+            "fact": "A Dyson Sphere is a hypothetical megastructure that completely encompasses a star to capture most or all of its energy output"
+        },
+        {
+            "id": 2,
+            "structure": "Dyson Swarm",
+            "fact": "A Dyson Swarm is a more practical variation of a Dyson Sphere, consisting of numerous independent satellites orbiting a star to collect its energy"
+        },
+        {
+            "id": 3,
+            "structure": "Matrioshka Brain",
+            "fact": "A Matrioshka Brain is a series of nested Dyson Spheres, each using the waste heat of the inner sphere to power computational processes"
+        },
+        {
+            "id": 4,
+            "structure": "Ringworld",
+            "fact": "A Ringworld is a massive ring-shaped structure that encircles a star at a distance similar to a habitable planet's orbit"
+        },
+        {
+            "id": 5,
+            "structure": "O'Neill Cylinder",
+            "fact": "O'Neill Cylinders are paired rotating habitats that provide artificial gravity through centripetal force, capable of housing millions of people"
+        },
+        {
+            "id": 6,
+            "structure": "Alderson Disk",
+            "fact": "An Alderson Disk is a hypothetical structure that is a flat disk extending around a star, with the star at its center, providing enormous habitable surface area"
+        },
+        {
+            "id": 7,
+            "structure": "Shkadov Thruster",
+            "fact": "A Shkadov Thruster is a partial Dyson Sphere that uses a star's radiation pressure to move the entire solar system through space"
+        },
+        {
+            "id": 8,
+            "structure": "Bishop Ring",
+            "fact": "A Bishop Ring is a rotating space habitat larger than a Stanford Torus but smaller than a Ringworld, using carbon nanotubes for structural integrity"
+        },
+        {
+            "id": 9,
+            "structure": "Stellar Engine",
+            "fact": "A Stellar Engine is any megastructure designed to use a star's energy to generate thrust and move the entire solar system"
+        },
+        {
+            "id": 10,
+            "structure": "Space Elevator",
+            "fact": "A Space Elevator is a tether extending from Earth's surface to geosynchronous orbit, allowing cheap and efficient space access"
+        },
+        {
+            "id": 11,
+            "structure": "Orbital Ring",
+            "fact": "An Orbital Ring is a solid ring around Earth that floats above the atmosphere using active support, enabling easy space access"
+        },
+        {
+            "id": 12,
+            "structure": "Bubble World",
+            "fact": "A Bubble World is a hollow spherical habitat filled with air, using rotation for gravity and containing an entire ecosystem"
+        },
+        {
+            "id": 13,
+            "structure": "McKendree Cylinder",
+            "fact": "A McKendree Cylinder is a scaled-up version of an O'Neill Cylinder, built using carbon nanotubes and capable of housing billions"
+        },
+        {
+            "id": 14,
+            "structure": "Globus Cassus",
+            "fact": "Globus Cassus is a hypothetical project to transform Earth into a hollow megastructure with its entire mass used for living space"
+        },
+        {
+            "id": 15,
+            "structure": "Stellar Laser Array",
+            "fact": "A Stellar Laser Array is a network of satellites that concentrate stellar energy into powerful laser beams for interstellar propulsion"
+        },
+        {
+            "id": 16,
+            "structure": "Topopolis",
+            "fact": "A Topopolis is a tube-shaped rotating habitat bent into a circle around a star, combining features of a Stanford Torus and O'Neill Cylinder"
+        },
+        {
+            "id": 17,
+            "structure": "Nicoll-Dyson Beam",
+            "fact": "A Nicoll-Dyson Beam is a Dyson Swarm modified to concentrate the star's energy into a powerful beam for interstellar communication or propulsion"
+        },
+        {
+            "id": 18,
+            "structure": "Kardashev Shell",
+            "fact": "A Kardashev Shell is a theoretical structure that completely encloses a galaxy to harness all of its energy output"
+        },
+        {
+            "id": 19,
+            "structure": "Birch Planet",
+            "fact": "A Birch Planet is a planet-sized computer made from degenerate matter, capable of performing computations using the entire mass of a planet"
+        },
+        {
+            "id": 20,
+            "structure": "Stanford Torus",
+            "fact": "A Stanford Torus is a wheel-shaped space station that rotates to provide artificial gravity, designed to house 10,000 to 140,000 permanent residents"
+        }
             ]
         };
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const factsContainer = document.getElementById('facts-container');
+        let currentFactIndex = 0;
+
+        function displayFact(index) {
+            const fact = spaceData.futuristic_space_structures[index];
+            const factCard = document.getElementById('fact-card');
             
-            spaceData.futuristic_space_structures.forEach(item => {
-                const factCard = document.createElement('div');
-                factCard.className = 'fact-card';
-                
-                factCard.innerHTML = `
-                    <h2 class="structure-name">${item.structure}</h2>
-                    <p class="fact-text">${item.fact}</p>
-                `;
-                
-                factsContainer.appendChild(factCard);
-            });
+            factCard.innerHTML = `
+                <h2 class="structure-name">${fact.structure}</h2>
+                <p class="fact-text">${fact.fact}</p>
+            `;
+        }
+
+        function nextFact() {
+            currentFactIndex = (currentFactIndex + 1) % spaceData.futuristic_space_structures.length;
+            displayFact(currentFactIndex);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            displayFact(currentFactIndex);
+            document.getElementById('next-button').addEventListener('click', nextFact);
         });
     </script>
+</body>
+</html>
